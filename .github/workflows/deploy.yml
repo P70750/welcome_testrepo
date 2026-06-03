@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: welcome_test1
 
     steps:
       - name: Check out repository
