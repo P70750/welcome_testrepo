@@ -16,8 +16,17 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
 
-      - name: Build Docker image
-        run: docker build -t my-web-app .
+      - name: Stop existing container
+        run: docker stop my-web-app-container || true
 
-      - name: Running container
-        run: docker run -d --name my-web-app-container -p 8090:80 my-web-app:latest
+      - name: Remove existing container
+        run: docker rm my-web-app-container || true
+
+      - name: Remove existing image
+        run: docker rmi my-web-app:latest || true
+
+      - name: Build Docker image
+        run: docker build -t my-web-application:latest .
+
+      - name: Run container
+        run: docker run -d --name my-web-app-container -p 8090:80 my-web-application:latest
