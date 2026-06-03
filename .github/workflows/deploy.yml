@@ -18,3 +18,6 @@ jobs:
 
       - name: Build Docker image
         run: docker build -t my-web-app .
+
+      - name: Running container
+        run: docker run -d --name my-web-app-container -p 8090:80 my-web-app:latest
